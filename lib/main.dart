@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_app_bloc_demo/category_Screens.dart';
+import 'package:flutter_app_bloc_demo/category_meals_screen.dart';
 
 void main() => runApp(MyApp());
 
@@ -25,7 +26,12 @@ class MyApp extends StatelessWidget {
               ),
             ),
       ),
-      home: CategoriesScreen(),
+      // home: CategoriesScreen(),
+      initialRoute: "/",
+      routes: {
+        "/": (ctx) => CategoriesScreen(),
+        CategoryMealsScreen.routerName: (ctx) => CategoryMealsScreen(),
+      },
     );
   }
 }
