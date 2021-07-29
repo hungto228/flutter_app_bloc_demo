@@ -61,23 +61,30 @@ class MealDetailScreen extends StatelessWidget {
               title: "Step",
             ),
             buildContainer(
-              ListView.builder(
-                itemBuilder: (ctx, index) => Column(
-                  children: [
-                    ListTile(
-                      leading: CircleAvatar(
-                        child: Text("# ${(index + 1)}"),
+              NotificationListener<OverscrollIndicatorNotification>(
+                onNotification: (OverscrollIndicatorNotification? overscroll) {
+                  overscroll!.disallowGlow();
+                  return true;
+                },
+                child: ListView.builder(
+                  itemBuilder: (ctx, index) => Column(
+                    children: [
+                      ListTile(
+                        focusColor: Colors.black54,
+                        leading: CircleAvatar(
+                          child: Text("# ${(index + 1)}"),
+                        ),
+                        title: Text(
+                          selectedMeal.steps[index],
+                        ),
                       ),
-                      title: Text(
-                        selectedMeal.steps[index],
-                      ),
-                    ),
-                    Divider(),
-                  ],
+                      Divider(),
+                    ],
+                  ),
+                  itemCount: selectedMeal.steps.length,
                 ),
-                itemCount: selectedMeal.steps.length,
               ),
-            )
+            ),
           ],
         ),
       ),
