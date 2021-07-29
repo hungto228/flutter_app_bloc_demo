@@ -15,8 +15,26 @@ const DUMMY_MEALS = const [
       title: "title",
       imageUrl:
           "https://image.shutterstock.com/image-vector/cartoon-thumps-up-like-sign-260nw-1454100671.jpg",
-      ingredients: ["ingredients1", "ingredients2"],
-      steps: ["steps1", "steps2"],
+      ingredients: [
+        "ingredients1",
+        "ingredients2",
+        "ingredients2",
+        "ingredients2",
+        "ingredients2",
+        "ingredients2",
+        "ingredients2",
+        "ingredients2",
+        "ingredients2"
+      ],
+      steps: [
+        "steps1",
+        "steps2",
+        "steps2",
+        "steps2",
+        "steps2",
+        "steps2",
+        "steps2"
+      ],
       duration: 20,
       complexity: Complexity.Simple,
       affordability: Affordability.Affordable,
