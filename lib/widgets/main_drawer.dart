@@ -1,38 +1,47 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app_bloc_demo/screens/filter_screen.dart';
 
 class MainDrawer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Drawer(
-      child: Column(
-        children: [
-          Container(
-            height: 120,
-            width: double.infinity,
-            padding: EdgeInsets.all(20),
-            alignment: Alignment.centerLeft,
-            color: Theme.of(context).accentColor,
-            child: Text(
-              "cooking up",
-              style: TextStyle(
-                fontWeight: FontWeight.w900,
-                fontSize: 30,
-                color: Theme.of(context).primaryColor,
+      child: SingleChildScrollView(
+        child: Column(
+          children: [
+            Container(
+              height: 120,
+              width: double.infinity,
+              padding: EdgeInsets.all(20),
+              alignment: Alignment.centerLeft,
+              color: Theme.of(context).accentColor,
+              child: Text(
+                "cooking up",
+                style: TextStyle(
+                  fontWeight: FontWeight.w900,
+                  fontSize: 30,
+                  color: Theme.of(context).primaryColor,
+                ),
               ),
             ),
-          ),
-          SizedBox(
-            height: 20,
-          ),
-          buildListTitle(
-            icon: Icons.restaurant,
-            title: "Meals",
-          ),
-          buildListTitle(
-            icon: Icons.settings,
-            title: "Filter",
-          ),
-        ],
+            SizedBox(
+              height: 20,
+            ),
+            buildListTitle(
+                icon: Icons.restaurant,
+                title: "Meals",
+                tapHander: () {
+                  Navigator.of(context).pushNamed("/");
+                } //=> Navigator.of(context).pushNamed("/"),
+                ),
+            buildListTitle(
+              icon: Icons.settings,
+              title: "Filter",
+              tapHander: () {
+                Navigator.of(context).pushNamed(FilterScreen.routerName);
+              },
+            ),
+          ],
+        ),
       ),
     );
   }
@@ -41,8 +50,10 @@ class MainDrawer extends StatelessWidget {
 class buildListTitle extends StatelessWidget {
   final String title;
   final IconData icon;
+  final Function() tapHander;
 
-  buildListTitle({required this.title, required this.icon});
+  buildListTitle(
+      {required this.title, required this.icon, required this.tapHander});
 
   @override
   Widget build(BuildContext context) {
@@ -59,9 +70,7 @@ class buildListTitle extends StatelessWidget {
           fontWeight: FontWeight.bold,
         ),
       ),
-      onTap: () {
-        // some thing
-      },
+      onTap: tapHander,
     );
   }
 }
