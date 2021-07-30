@@ -9,6 +9,7 @@ class MeaslItem extends StatelessWidget {
   final int duration;
   final Complexity complexity;
   final Affordability affordability;
+  final Function removeIteml;
 
   const MeaslItem(
       {required this.id,
@@ -16,13 +17,20 @@ class MeaslItem extends StatelessWidget {
       required this.imageUrl,
       required this.duration,
       required this.complexity,
-      required this.affordability});
+      required this.affordability,
+      required this.removeIteml});
 
   void selectMeal(BuildContext context) {
-    Navigator.of(context).pushNamed(
+    Navigator.of(context)
+        .pushNamed(
       MealDetailScreen.routerName,
       arguments: id,
-    );
+    )
+        .then((value) {
+      if (value != null) {
+        removeIteml(value);
+      }
+    });
   }
 
   String get complexityText {
